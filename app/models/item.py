@@ -1,5 +1,6 @@
 from app.models import Base, Category
 from sqlalchemy import Column, Integer, String, Float, ForeignKey
+from sqlalchemy.orm import relationship
 
 
 class Item(Base):
@@ -8,3 +9,4 @@ class Item(Base):
     name = Column(String(255))
     price = Column(Float)
     category_id = Column(Integer, ForeignKey(Category.id), nullable=False)
+    category = relationship("Category", back_populates="item")

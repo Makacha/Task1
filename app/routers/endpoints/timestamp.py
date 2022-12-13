@@ -5,6 +5,6 @@ from app.util import get_current_timestamp
 router = APIRouter()
 
 
-@router.get("/")
+@router.get("/", response_model=DataResponseSchema[int])
 def get_timestamp():
     return DataResponseSchema().success(get_current_timestamp())
